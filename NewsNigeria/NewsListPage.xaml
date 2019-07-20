@@ -1,0 +1,45 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:ads="clr-namespace:NewsNigeria.Control"
+             mc:Ignorable="d"
+             x:Class="NewsNigeria.NewsListPage"
+             NavigationPage.HasNavigationBar="False">
+    <ContentPage.Content>
+        <Grid RowSpacing="0" BackgroundColor="Black">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="auto"/>
+            </Grid.RowDefinitions>
+            <Image Source="contact-us.jpg"
+               Aspect="AspectFill"/>
+
+
+
+            <StackLayout
+            VerticalOptions="Start">
+
+
+                <SearchBar x:Name="ContactfilterSearchbar"
+                       BackgroundColor="White"
+                       TextColor="Black"
+                       Placeholder="Enter Name"
+                       HorizontalTextAlignment="Center"
+                           TextChanged="ContactfilterSearchbar_TextChanged"/>
+
+                <ListView x:Name="ContactListView"
+                      ItemSelected="ContactListView_ItemSelected">
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <ImageCell  ImageSource="{Binding ImageUrl}" Text="{Binding Name}" TextColor="LightGreen" Detail="{Binding About} " DetailColor="White"/>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+
+                </ListView>
+            </StackLayout>
+            <ads:AdControlView x:Name="AdControl" Grid.Row="1"/>
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>

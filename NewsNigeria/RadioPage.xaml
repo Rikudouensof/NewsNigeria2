@@ -1,0 +1,89 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:ads="clr-namespace:NewsNigeria.Control"
+             mc:Ignorable="d"
+             x:Class="NewsNigeria.RadioPage"
+             NavigationPage.HasNavigationBar="False">
+    <ContentPage.Content>
+        <Grid BackgroundColor="Black" RowSpacing="0">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="*" />
+
+                <RowDefinition Height="auto" x:Name="AdvartGrid"/>
+            </Grid.RowDefinitions>
+            <ActivityIndicator x:Name="SiteNavActivityIndcator"
+                               Grid.Row="0"
+                               Grid.RowSpan="2"
+                               Color="LightGray" 
+                               HorizontalOptions="FillAndExpand"
+                               IsRunning="True"
+                               VerticalOptions="CenterAndExpand"/>
+
+            <Button         Grid.Row="0"
+                            Text="V"
+                            FontAttributes="Bold"
+                            FontSize="Large"
+                            TextColor="White"
+                            Clicked="Button_Clicked"
+                            BackgroundColor="Black"
+                            x:Name="ControlButton"
+                            />
+
+
+
+            <ScrollView Grid.Row="1" 
+                        HorizontalOptions="Fill"
+                        VerticalOptions="Fill"
+                        x:Name="WebScrollVIew"
+                        IsVisible="True">
+
+                    
+                    <WebView x:Name="Thewebview"  
+                         HorizontalOptions="Fill" 
+                         VerticalOptions="Fill" 
+                         Source="{Binding TheUrl}"
+                         Navigated="Thewebview_Navigated"
+                         Navigating="Thewebview_Navigating"/>
+
+
+                    
+                    
+               
+                
+            </ScrollView>
+
+
+            <StackLayout Orientation="Vertical" 
+                         VerticalOptions="CenterAndExpand"
+                         HorizontalOptions="Center"
+                         BackgroundColor="Black"
+                         Grid.Row="1"
+                         x:Name="DisplayStacklayout"
+                         >
+                <Label Text="{Binding Name}" 
+                       FontSize="Large" 
+                       TextColor="White"
+                       FontFamily="Bahnschrift"
+                       />
+                <Label Text="{Binding About}"
+                       FontSize="Small"
+                       TextColor="White"
+                       FontFamily="Bahnshrift"
+                       />
+                <Image Source="download.png" 
+                       Aspect="AspectFill"
+                       HorizontalOptions="CenterAndExpand"
+                       />
+                
+
+
+            </StackLayout>
+            <ads:AdControlView x:Name="AdControl" Grid.Row="2"/>
+
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>

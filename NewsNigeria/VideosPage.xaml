@@ -1,0 +1,43 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:ads="clr-namespace:NewsNigeria.Control"
+             mc:Ignorable="d"
+             x:Class="NewsNigeria.VideosPage"
+             Title="{Binding Name}"
+             >
+    <ContentPage.Content>
+        <Grid RowSpacing="0">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*" />
+
+                <RowDefinition Height="auto" x:Name="AdvartGrid"/>
+            </Grid.RowDefinitions>
+
+            <ActivityIndicator x:Name="SiteNavActivityIndcator" 
+                               Grid.Row="0" 
+                               Color="DarkGreen" 
+                               HorizontalOptions="FillAndExpand" 
+                               IsRunning="True"
+                               VerticalOptions="CenterAndExpand"/>
+
+
+
+            <ScrollView Grid.Row="0" 
+                        HorizontalOptions="Fill"
+                        VerticalOptions="Fill">
+                <WebView x:Name="Thewebview"  
+                         HorizontalOptions="Fill" 
+                         VerticalOptions="Fill" 
+                         Source="{Binding TheUrl}"
+                         Navigating="Thewebview_Navigating"
+                         Navigated="Thewebview_Navigated"/>
+
+            </ScrollView>
+            <ads:AdControlView x:Name="AdControl" Grid.Row="1"/>
+
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>
